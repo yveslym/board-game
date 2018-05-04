@@ -12,12 +12,17 @@ import UIKit
 class Pawn: UIButton{
     
     var player: Player
+    var positionX: Int
+    var positionY: Int
     var neighborPlayerPosition = [Int]()
     override init(frame: CGRect) {
         
-        player = Player()
-        
+        player = Player(currentPlayer: .none)
+        positionX = 0
+        positionY = 0
         super.init(frame: frame)
+        self.layer.cornerRadius = frame.size.width / 2
+        self.clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,8 +30,9 @@ class Pawn: UIButton{
     }
     
     init(boardSize: Int, frame: CGRect, position: Int){
-       
-        player = Player()
+        positionX = 0
+        positionY = 0
+        player = Player(currentPlayer: .none)
          super.init(frame: frame)
         self.getNeighborPlayerPosition(boardSize: boardSize, position: position)
     }
@@ -94,6 +100,34 @@ class Pawn: UIButton{
             default:
                 break
             }
+            //self.checkBorderPawn(boardSize: boardSize, position: position)
+        }
+    }
+    func checkBorderPawn(boardSize: Int, position: Int){
+        
+        /// check top right corner
+        if (position % boardSize) == 0{
+            self.neighborPlayerPosition[2] = 0
+             self.neighborPlayerPosition[4] = 0
+             self.neighborPlayerPosition[7] = 0
+        }
+        /// check the left corner
+        if (self.positionX == 0){
+            self.neighborPlayerPosition[0] = 0
+            self.neighborPlayerPosition[3] = 0
+            self.neighborPlayerPosition[5] = 0
+        }
+        /// check the bottom corner
+        if (self.positionY == (boardSize - 1)){
+            self.neighborPlayerPosition[5] = 0
+            self.neighborPlayerPosition[6] = 0
+            self.neighborPlayerPosition[7] = 0
         }
     }
 }
+
+
+
+
+
+

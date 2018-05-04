@@ -8,6 +8,17 @@
 import UIKit
 import Foundation
 
-struct Player{
+class Player{
+   
+    var currentPlayer : CurrentPlayer
     
+    init(currentPlayer: CurrentPlayer){
+        self.currentPlayer = currentPlayer
+    }
+}
+
+enum CurrentPlayer: String {
+    case first
+    case second
+    case none
 }

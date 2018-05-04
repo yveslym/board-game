@@ -10,9 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var pawnBoard = [UIButton]()
+    var pawnBoard = [Pawn]()
     var mainBoard: UIView!
     var boardSize: Int!
+    var player = Player(currentPlayer: .none)
     override func viewDidLoad() {
         super.viewDidLoad()
        boardSize = 20
@@ -22,9 +23,19 @@ class ViewController: UIViewController {
         setUpGame()
     }
     
-    @objc func pawnTapped(_ button: UIButton){
-        button.backgroundColor = UIColor.red
-        print(button.tag)
+    @objc func pawnTapped(_ pawn: Pawn){
+        
+        GameCenter.startGame(pawn: pawn, player: player)
+        
+        print("player: \(player.currentPlayer)")
+        print("pawn \(pawn.tag) neighboor: \(pawn.neighborPlayerPosition)" )
+        
+        print("X positon: \(pawn.positionX)")
+        print("Y positon: \(pawn.positionY)")
+        print("-------------------------------------------")
+        //let player = Player(currentPlayer: .first)
+        //pawn.player = player
+        
     }
 }
 
@@ -71,20 +82,24 @@ extension ViewController{
                 let rec = CGRect(x: x, y: y, width: widgth, height: heigth)
                 let newView = UIView(frame: rec)
                 (views.count == 0) ? (newView.tag = 1) : (newView.tag = views[count].tag + 1)
+                var image = UIImage(named: "Rectangle")
+                (countPoin % boardSize == 0) ? (image = UIImage(named: "left line")) : (image = UIImage(named: "Rectangle"))
                 
                 
-                let image = UIImage(named: "Rectangle")
                 let imageView = UIImageView(frame: rec)
                 imageView.image = image
                 
                
                 let poinrect = CGRect(x: 0, y: 0, width: imageView.frame.width / 1.5 , height: imageView.frame.height / 1.5 )
                 
-                let pawn = UIButton(frame: poinrect)
+                let pawn = Pawn(frame: poinrect)
                 
                 pawn.center = imageView.bounds.origin
                 pawn.addTarget(self, action: #selector(self.pawnTapped(_:)), for: .touchUpInside)
                 
+                // Add pawn position
+                pawn.positionX = w
+                pawn.positionY = h
                 
                 pawn.titleLabel?.text = "\(countPoin)"
                 pawn.tag = countPoin
@@ -107,6 +122,17 @@ extension ViewController{
                 countPoin += 1
             }
         }
+        pawnBoard.forEach{
+            $0.getNeighborPlayerPosition(boardSize: boardSize, position: $0.tag)
+            $0.checkBorderPawn(boardSize: boardSize, position: $0.tag)
+        }
         self.view.addSubview(mainBoard)
     }
 }
+
+
+
+
+
+
+
