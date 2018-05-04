@@ -15,12 +15,16 @@ class ViewController: UIViewController {
     var boardSize: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
-       boardSize = 25
+       boardSize = 20
+        
+       
+        
         setUpGame()
     }
     
     @objc func pawnTapped(_ button: UIButton){
         button.backgroundColor = UIColor.red
+        print(button.tag)
     }
 }
 
@@ -68,19 +72,17 @@ extension ViewController{
                 let newView = UIView(frame: rec)
                 (views.count == 0) ? (newView.tag = 1) : (newView.tag = views[count].tag + 1)
                 
-                //                if (w+1) % 2 == 0{
-                //                (newView.tag % 2 == 0) ? (newView.backgroundColor = UIColor.black) : (newView.backgroundColor = UIColor.white)
-                //                }else{
-                //                    (newView.tag % 2 == 0) ? (newView.backgroundColor = UIColor.white) : (newView.backgroundColor = UIColor.black)
-                //                }
+                
                 let image = UIImage(named: "Rectangle")
                 let imageView = UIImageView(frame: rec)
                 imageView.image = image
                 
-                let xOffset = -((imageView.frame.width / 2) / 2)
-                let yOffset = -((imageView.frame.height / 2) / 2)
-                let poinrect = CGRect(x: xOffset, y: yOffset, width: imageView.frame.width / 2, height: imageView.frame.height / 2)
+               
+                let poinrect = CGRect(x: 0, y: 0, width: imageView.frame.width / 1.5 , height: imageView.frame.height / 1.5 )
+                
                 let pawn = UIButton(frame: poinrect)
+                
+                pawn.center = imageView.bounds.origin
                 pawn.addTarget(self, action: #selector(self.pawnTapped(_:)), for: .touchUpInside)
                 
                 
@@ -106,6 +108,5 @@ extension ViewController{
             }
         }
         self.view.addSubview(mainBoard)
-        
     }
 }

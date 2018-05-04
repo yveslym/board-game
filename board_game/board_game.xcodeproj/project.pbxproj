@@ -12,6 +12,8 @@
 		20937AA1209BDA920045B8C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20937A9F209BDA920045B8C2 /* Main.storyboard */; };
 		20937AA3209BDA920045B8C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20937AA2209BDA920045B8C2 /* Assets.xcassets */; };
 		20937AA6209BDA920045B8C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20937AA4209BDA920045B8C2 /* LaunchScreen.storyboard */; };
+		20937AAE209C08EE0045B8C2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20937AAD209C08EE0045B8C2 /* Player.swift */; };
+		20937AB1209C094D0045B8C2 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20937AB0209C094D0045B8C2 /* Pawn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		20937AA2209BDA920045B8C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20937AA5209BDA920045B8C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20937AA7209BDA920045B8C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20937AAD209C08EE0045B8C2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		20937AB0209C094D0045B8C2 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Pawn.swift; path = board_game/Pawn.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,25 @@
 		20937A9A209BDA920045B8C2 /* board_game */ = {
 			isa = PBXGroup;
 			children = (
+				20937AAF209C09270045B8C2 /* Game Manger */,
 				20937A9B209BDA920045B8C2 /* AppDelegate.swift */,
 				20937A9D209BDA920045B8C2 /* ViewController.swift */,
 				20937A9F209BDA920045B8C2 /* Main.storyboard */,
 				20937AA2209BDA920045B8C2 /* Assets.xcassets */,
 				20937AA4209BDA920045B8C2 /* LaunchScreen.storyboard */,
 				20937AA7209BDA920045B8C2 /* Info.plist */,
+				20937AAD209C08EE0045B8C2 /* Player.swift */,
 			);
 			path = board_game;
+			sourceTree = "<group>";
+		};
+		20937AAF209C09270045B8C2 /* Game Manger */ = {
+			isa = PBXGroup;
+			children = (
+				20937AB0209C094D0045B8C2 /* Pawn.swift */,
+			);
+			name = "Game Manger";
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20937A9E209BDA920045B8C2 /* ViewController.swift in Sources */,
+				20937AAE209C08EE0045B8C2 /* Player.swift in Sources */,
 				20937A9C209BDA920045B8C2 /* AppDelegate.swift in Sources */,
+				20937AB1209C094D0045B8C2 /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
